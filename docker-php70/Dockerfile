@@ -3,6 +3,8 @@ FROM php:7.0-apache
 # Add apache2 mod rewrite
 RUN a2enmod rewrite
 
+RUN rm /etc/apache2/sites-enabled/*
+
 RUN apt update
 
 # Install git and zip/unzip for sources and composer install scripts
