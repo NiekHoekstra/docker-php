@@ -1,0 +1,13 @@
+{
+    "name": "Application Name",
+    "description": "TODO",
+    "license": "",
+    "keywords": [],
+    "repositories": [],
+    "homepage": "http://www.example.com/",
+    "minimum-stability" : "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=5.3.3"
+    }
+}

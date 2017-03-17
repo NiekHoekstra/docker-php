@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+
+  php:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ../code/:/var/www/html/
+      - ../virtualhost.conf:/etc/apache2/sites-enabled/virtualhost.conf
+
+  php-composer:
+   build: .
+   command: '/bin/bash -c "php  /usr/local/bin/composer.phar self-update && php  /usr/local/bin/composer.phar install"'
+   volumes:
+      - ../code/:/var/www/html/
+
+
+
+
+  mysql:
+    image: mariadb:5.5.54
+    environment:
+      MYSQL_DATABASE: database
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+     - ../db-dump:/docker-entrypoint-initdb.d # Place your db dump as sql/sql.gz in ./db-dump to automatically load this
+    command: mysqld
